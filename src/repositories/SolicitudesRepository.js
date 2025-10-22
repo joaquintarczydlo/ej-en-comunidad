@@ -12,36 +12,25 @@ export class SolicitudesRepository {
         }
 
         this.solicitudes.push(solicitud);
-        console.log(this.solicitudes);
     }
 
-    actualizarSolicitud(id, respuestaSolicitud) {
-        const solicitud = this.solicitudes.find((solicitud) => solicitud.id == id);
-
-        if (solicitud === -1) {
-            throw new Error("La solicitud con este ID no existe");
-        }
-
-        solicitud.estado = respuestaSolicitud.estado;
-
-        if(!solicitud.estado){
-            throw new Error("Solicitud rechazada");
-        }
+    obtenerSolicitudes() {
+        return this.solicitudes;
     }
 
-    obtenerSolicitudesUsuario(id) {
-        return this.solicitudes.filter((solicitud) => (id == solicitud.idRemitente || id == solicitud.idReceptor) && solicitud.estado == true);
-    }
-
-    obtenerSolicitudesRecibidas(id) {
-        return this.solicitudes.filter((solicitud) => (id == solicitud.idRemitente) && solicitud.estado == null);
+    obtenerSolicitudesAceptadas(id) {
+        return this.solicitudes.filter((solicitud) => (id == solicitud.idEmisor || id == solicitud.idReceptor) && solicitud.estado == true);
     }
 
     obtenerSolicitudesEnviadas(id) {
+        return this.solicitudes.filter((solicitud) => (id == solicitud.idEmisor) && solicitud.estado == null);
+    }
+
+    obtenerSolicitudesRecibidas(id) {
         return this.solicitudes.filter((solicitud) => (id == solicitud.idReceptor) && solicitud.estado == null);
     }
 
     obtenerSolicitudesRechazadas(id) {
-        return this.solicitudes.filter((solicitud) => (id == solicitud.idRemitente) && solicitud.estado == false);
+        return this.solicitudes.filter((solicitud) => (id == solicitud.idEmisor) && solicitud.estado == false);
     }
 }

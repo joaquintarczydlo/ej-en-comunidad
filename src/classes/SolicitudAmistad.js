@@ -1,8 +1,8 @@
 
 export class SolicitudAmistad {
-    constructor(idRemitente, idReceptor) {
+    constructor(idEmisor, idReceptor) {
         this.id = null;
-        this.idRemitente = idRemitente;
+        this.idEmisor = idEmisor;
         this.idReceptor = idReceptor;
         this.estado = null;
     }

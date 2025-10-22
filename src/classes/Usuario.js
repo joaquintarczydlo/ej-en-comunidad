@@ -40,15 +40,4 @@ export class Usuario {
 
         return edad;
     }
-
 }
-
-/*{
-    "nombre" : "rehj5rt",
-    "apellido" : "apellido",
-    "email" : "e5hy5u4ry54",
-    "fechaNac" : "fechaNac",
-    "biografia" : "biografia",
-    "provincia" : "provincia",
-    "localidad" : "localidad"
-}*/
